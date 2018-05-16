@@ -5,6 +5,25 @@
     <link href='../public/css/thermostat_style.css' type="text/css" rel="stylesheet">
     <title>Thermostat</title>
     <script src="../src/thermostat.js"></script>
+    <script src="../lib/jquery-3.3.1.min.js"></script>
+    <script type="text/javascript">
+
+      var colors = ["blue", "red", "yellow"]
+      var i = 0;
+
+      function getColor(){
+        index = i % 3;
+        i++;
+        return colors[index];
+      }
+
+      $( document ).ready(function() {
+        $( "button" ).click(function(){
+          $( "body" ).css('background-color', getColor())
+        });
+      });
+
+    </script>
   </head>
 
   <body>
@@ -26,8 +45,10 @@
       <div class='controls'>
         <div class='left-controls'>
           <div class='up'>
+            <button type="button" name="up"></button>
           </div>
           <div class='down'>
+            <button type="button" name="down"></button>
           </div>
         </div>
         <div class='right-controls'>
