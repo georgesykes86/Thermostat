@@ -8,6 +8,10 @@ describe('Thermostat', function() {
     expect(thermostat.temperature).toEqual(20);
   });
 
+  it('should be on power saving mode', function() {
+    expect(thermostat.isPowerSaving).toBe(true);
+  });
+
   describe('#Up', function(){
     it('Increases the temperature by one unit', function(){
       thermostat.up();
@@ -26,5 +30,17 @@ describe('Thermostat', function() {
       }
       expect(function() {thermostat.down()}).toThrow("Minimum temperature reached")
     });
+  });
+
+  describe('#togglePowerSave', function(){
+    it('switches power saving mode off', function() {
+      thermostat.togglePowerSave()
+      expect(thermostat.isPowerSaving).toBe(false)
+    })
+    it('switches power saving mode on', function() {
+      thermostat.togglePowerSave()
+      thermostat.togglePowerSave()
+      expect(thermostat.isPowerSaving).toBe(true)
+    })
   });
 });
