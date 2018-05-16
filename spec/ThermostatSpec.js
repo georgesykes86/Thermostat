@@ -17,6 +17,29 @@ describe('Thermostat', function() {
       thermostat.up();
       expect(thermostat.temperature).toEqual(21);
     });
+
+    it('Throws an error when going above 25 in PSM', function(){
+      for(var i = 0; i < 5; i++){
+        thermostat.up();
+      }
+      expect(function() {thermostat.up()}).toThrow("Maximum temperature reached")
+    });
+
+    it('Doesn\'t throw an error when going above 25 not in PSM', function(){
+      thermostat.togglePowerSave();
+      for(var i = 0; i < 5; i++){
+        thermostat.up();
+      }
+      expect(function() {thermostat.up()}).not.toThrow("Maximum temperature reached")
+    });
+
+    it('Throws and error when going above 32 when not in PSM', function(){
+      thermostat.togglePowerSave();
+      for(var i = 0; i < 12; i++){
+        thermostat.up();
+      }
+      expect(function() {thermostat.up()}).toThrow("Maximum temperature reached")
+    });
   });
 
   describe('#Down', function(){

@@ -5,6 +5,7 @@ function Thermostat() {
 };
 
 Thermostat.prototype.up = function(){
+  if (this.temperature === this.maxTemp()) {throw "Maximum temperature reached"}
   this.temperature++;
 }
 
@@ -15,4 +16,8 @@ Thermostat.prototype.down = function(){
 
 Thermostat.prototype.togglePowerSave = function(){
   this.isPowerSaving = !this.isPowerSaving
+}
+
+Thermostat.prototype.maxTemp = function(){
+  return this.isPowerSaving ? 25 : 32
 }
