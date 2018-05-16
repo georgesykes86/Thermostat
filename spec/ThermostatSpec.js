@@ -74,4 +74,26 @@ describe('Thermostat', function() {
       expect(thermostat.temperature).toEqual(20)
     });
   });
+
+  describe('#energyUsage', function() {
+    it('returns low-usage when temperature below 18', function() {
+      for(var i = 0; i < 3; i++){
+        thermostat.down();
+      }
+      expect(thermostat.energyUsage()).toEqual("low-usage");
+    });
+
+    it('returns medium-usage when temperature between 18 - 25', function() {
+      expect(thermostat.energyUsage()).toEqual("medium-usage");
+    });
+
+    it('returns high-usage when temperature between 25 - 32', function() {
+      thermostat.togglePowerSave()
+      for(var i = 0; i < 7; i++){
+        thermostat.up();
+      }
+      expect(thermostat.energyUsage()).toEqual("high-usage");
+    });
+
+  });
 });
