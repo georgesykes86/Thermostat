@@ -14,4 +14,11 @@ describe('Thermostat', function() {
       expect(thermostat.temperature).toEqual(21);
     });
   });
+
+  describe('#Down', function(){
+    it('Decreases the temperature by one unit', function(){
+      thermostat.down();
+      expect(thermostat.temperature).toEqual(19);
+    });
+  });
 });
