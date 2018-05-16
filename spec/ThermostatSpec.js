@@ -66,4 +66,12 @@ describe('Thermostat', function() {
       expect(thermostat.isPowerSaving).toBe(true)
     })
   });
+
+  describe('#reset', function() {
+    it('resets temperature to 20', function() {
+      thermostat.down()
+      thermostat.reset()
+      expect(thermostat.temperature).toEqual(20)
+    });
+  });
 });
