@@ -1,0 +1,61 @@
+body {
+  display: flex;
+  background-color: #464749;
+  justify-content: center;
+}
+.thermostat-border {
+  margin-top: 100px;
+  height: 500px;
+  width: 500px;
+  background-image: url("http://www.backgroundsy.com/file/large/silver-background.jpg");
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.thermostat {
+  height: 430px;
+  width: 430px;
+  background-color: black;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+.display {
+  height: 120px;
+  width: 300px;
+  margin-top: 23%;
+  display: flex;
+  color: red;
+  text-align: center;
+  font-family: 'Inconsolata', monospace;
+}
+.controls {
+  width: 210px;
+  height: 130px;
+  display: flex;
+  justify-content: space-between;
+}
+.right-controls {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.left-controls {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+button {
+  height: 50px;
+  width: 90px;
+  border-radius: 15%;
+  background-color: #d9dbdd;
+}
+.visible {
+  color: red;
+}
+.hidden {
+  color: black;
+}

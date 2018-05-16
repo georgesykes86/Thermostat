@@ -3,43 +3,49 @@
   <head>
     <meta charset="utf-8">
     <link href='../public/css/thermostat_style.css' type="text/css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Inconsolata" rel="stylesheet">
     <title>Thermostat</title>
     <script src="../src/thermostat.js"></script>
     <script src="../lib/jquery-3.3.1.min.js"></script>
     <script type="text/javascript">
-
-      var colors = ["blue", "red", "yellow"]
-      var i = 0;
-
-      function getColor(){
-        index = i % 3;
-        i++;
-        return colors[index];
-      }
-
-      $( document ).ready(function() {
-        $( "button" ).click(function(){
-          $( "body" ).css('background-color', getColor())
+    $('document').ready(function() {
+      $('#PSM').click(function() {
+        $('#PSM-status').toggleClass(function (){
+          if ( $(this).is('.visible')) {
+            return 'hidden';
+          } else {
+            return 'visible';
+          }
         });
       });
 
+      for(var i=0; i < 100; i++)  {
+        $('#message').fadeOut(200).fadeIn(200);
+      }
+
+    });
     </script>
   </head>
 
   <body>
+    <div class='thermostat-border'>
     <div class='thermostat'>
       <div class='display'>
         <div class='left-display'>
-          <div class='message'>
-          </div>
-          <div class='temperature'>
-          </div>
+          <p id='message'>
+            Maximum temperature reached
+          </p>
+          <p class='temperature'>
+            17
+          </p>
         </div>
         <div class='right-display'>
-          <div class='PSM-status'>
-          </div>
-          <div class='usage'>
-          </div>
+          <p id='PSM-status' class='visible'>
+            Powersaving mode
+          </p>
+          <p class='usage'>
+            Energy usage
+          </p>
         </div>
       </div>
       <div class='controls'>
@@ -53,11 +59,14 @@
         </div>
         <div class='right-controls'>
           <div class='reset'>
+            <button type="button" name="reset"></button>
           </div>
-          <div class='PSM'>
+          <div id='PSM'>
+            <button type="button" name="Powersaving Mode"></button>
           </div>
         </div>
       </div>
     </div>
+  </div>
   </body>
 </html>
