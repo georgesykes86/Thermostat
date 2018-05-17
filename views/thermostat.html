@@ -15,37 +15,41 @@
     <div class='thermostat'>
       <div class='display'>
         <div class='left-display'>
-          <p id='message'>
-            Maximum temperature reached
-          </p>
-          <p class='temperature'>
-            17
-          </p>
+          <span class='temperature'>
+
+          </span>
+          <span class='deg'>&#8451;</span>
         </div>
         <div class='right-display'>
           <p id='PSM-status' class='visible'>
-            Powersaving mode
+            Power Saving Mode
           </p>
-          <p class='usage'>
-            Energy usage
+          <p id='message'>
           </p>
+        </div>
+      </div>
+      <div class="energy">
+        <div class="elabel">
+          Energy Usage
+        </div>
+        <div class="ebar">
         </div>
       </div>
       <div class='controls'>
         <div class='left-controls'>
           <div id='up'>
-            <button type="button" name="up"></button>
+            <button type="button" name="up">&#8679;</button>
           </div>
           <div id='down'>
-            <button type="button" name="down"></button>
+            <button type="button" name="down">&#8681;</button>
           </div>
         </div>
         <div class='right-controls'>
           <div class='reset'>
-            <button type="button" name="reset"></button>
+            <button type="button" name="reset">Reset</button>
           </div>
           <div id='PSM'>
-            <button type="button" name="Powersaving Mode"></button>
+            <button type="button" name="Powersaving Mode">PSM</button>
           </div>
         </div>
       </div>
