@@ -52,6 +52,7 @@ $('document').ready(function() {
   })
 
   $('#down').click( function() {
+<<<<<<< HEAD
     try {
     thermostat.down();
     setDisplay();
@@ -61,6 +62,14 @@ $('document').ready(function() {
     if (msg === "Minimum temperature reached") {
       flash(error);
     }
+=======
+    thermostat.down();
+    $('.temperature').text(thermostat.temperature);
+  })
+
+  function psmClassSetter(){
+    return thermostat.isPowerSaving ? 'visible' : 'hidden'
+>>>>>>> a123275954e494dd6cad69c59eabbb199ff6742c
   }
   })
 
@@ -69,9 +78,24 @@ $('document').ready(function() {
     setDisplay();
   });
 
+<<<<<<< HEAD
   $('.reset').click(function() {
     thermostat.reset();
     setDisplay();
   });
+=======
+
+  $('#PSM').click(function() {
+    thermostat.togglePowerSave();
+    console.log(thermostat.isPowerSaving)
+    $('#PSM-status').toggleClass(
+      psmClassSetter()
+    );
+  });
+
+  // for(var i=0; i < 100; i++)  {
+  //   $('#message').fadeOut(200).fadeIn(200);
+  // }
+>>>>>>> a123275954e494dd6cad69c59eabbb199ff6742c
 
 });
