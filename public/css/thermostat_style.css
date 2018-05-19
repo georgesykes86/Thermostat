@@ -2,6 +2,7 @@ body {
   display: flex;
   background-color: #464749;
   justify-content: center;
+  font-family: 'Inconsolata', monospace;
 }
 .thermostat-border {
   margin-top: 100px;
@@ -23,14 +24,25 @@ body {
   flex-direction: column;
 }
 .display {
-  height: 180px;
+  height: 140px;
   width: 300px;
-  margin-top: 16%;
+  margin-top: 0%;
   margin-bottom: 4%;
   display: flex;
   color: red;
   text-align: center;
-  font-family: 'Inconsolata', monospace;
+}
+
+.weather {
+  height: 60px;
+  width: 250px;
+  margin-top: 8%;
+  margin-bottom: 4%;
+  display: flex;
+  color: white;
+  text-align: center;
+  align-items: center;
+  justify-content: center;
 }
 
 .left-display {
@@ -111,4 +123,27 @@ button:focus {outline:0;}
   height: 20px;
   background-color: yellow;
   width: 50px;
+}
+
+#wi{
+  height: 50px;
+  width: 80px;
+  font-size: 45pt;
+}
+
+.location {
+  font-size: 15pt;
+  height: 50px;
+  width: 120px;
+  margin-top: 30px;
+}
+
+#loctemp {
+  height: 50px;
+  width: 50px;
+  margin-top: 30px;
+}
+
+#loctemp span {
+  font-size: 15pt;
 }

@@ -1,8 +1,37 @@
 
-
 $('document').ready(function() {
-
   var thermostat = new Thermostat();
+  var geolocator = new Geolocator();
+  var weatherAPI = new WeatherAPI(geolocator);
+  var time = new Time
+
+  function setDisplay(weatherJSON = null) {
+    $('.temperature').text(thermostat.temperature);
+    $('#PSM-status').attr('class', psmClassSetter() );
+    $('.ebar').width(function(){
+      var size = 50 + (150 * setEnergyBarSize())
+      return size.toString() + 'px';
+    });
+    $('.ebar').css('background-color', setEnergyBarColor())
+    if (weatherJSON) {
+      var weatherDetails = weatherIcon[weatherJSON.weather]
+      if (time.isDay()){ var icon = weatherDetails["Day icon"]}
+      else {var icon = weatherDetails["Night icon"]}
+      console.log(icon)
+      $("#wi").removeClass().addClass('wi '+ icon)
+      $(".location").html(weatherJSON.location)
+      $(".loctemp").html(Math.round(weatherJSON.temp))
+    }
+    else {
+      $("#wi").removeClass().addClass('wi '+ "wi-alien")
+    }
+  }
+
+
+  weatherAPI.getWeather(setDisplay);
+  console.log(weatherAPI)
+  setDisplay()
+
 
   function flash(object) {
     $('#message').text(object);
@@ -15,15 +44,6 @@ $('document').ready(function() {
     return thermostat.isPowerSaving ? 'visible' : 'hidden'
   }
 
-  function setDisplay() {
-    $('.temperature').text(thermostat.temperature);
-    $('#PSM-status').attr('class', psmClassSetter() );
-    $('.ebar').width(function(){
-      var size = 50 + (150 * setEnergyBarSize())
-      return size.toString() + 'px';
-    });
-    $('.ebar').css('background-color', setEnergyBarColor())
-  }
 
   function setEnergyBarSize() {
     var barSize = (thermostat.temperature - thermostat.minimum_temp) / (thermostat.maximum_temp - thermostat.minimum_temp);
@@ -36,7 +56,6 @@ $('document').ready(function() {
     else { return "red"}
   }
 
-  setDisplay();
 
   $('#up').click( function() {
     try {
@@ -52,7 +71,6 @@ $('document').ready(function() {
   })
 
   $('#down').click( function() {
-<<<<<<< HEAD
     try {
     thermostat.down();
     setDisplay();
@@ -62,14 +80,6 @@ $('document').ready(function() {
     if (msg === "Minimum temperature reached") {
       flash(error);
     }
-=======
-    thermostat.down();
-    $('.temperature').text(thermostat.temperature);
-  })
-
-  function psmClassSetter(){
-    return thermostat.isPowerSaving ? 'visible' : 'hidden'
->>>>>>> a123275954e494dd6cad69c59eabbb199ff6742c
   }
   })
 
@@ -78,24 +88,9 @@ $('document').ready(function() {
     setDisplay();
   });
 
-<<<<<<< HEAD
   $('.reset').click(function() {
     thermostat.reset();
     setDisplay();
   });
-=======
-
-  $('#PSM').click(function() {
-    thermostat.togglePowerSave();
-    console.log(thermostat.isPowerSaving)
-    $('#PSM-status').toggleClass(
-      psmClassSetter()
-    );
-  });
-
-  // for(var i=0; i < 100; i++)  {
-  //   $('#message').fadeOut(200).fadeIn(200);
-  // }
->>>>>>> a123275954e494dd6cad69c59eabbb199ff6742c
 
 });

@@ -3,9 +3,14 @@
   <head>
     <meta charset="utf-8">
     <link href='../public/css/thermostat_style.css' type="text/css" rel="stylesheet">
+    <link href='../public/css/weather-icons.css' type="text/css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Inconsolata" rel="stylesheet">
     <title>Thermostat</title>
     <script src="../lib/jquery-3.3.1.min.js"></script>
+    <script src="../lib/weather-icon.js"></script>
+    <script src="../src/geolocator.js"></script>
+    <script src="../src/weatherAPI.js"></script>
+    <script src="../src/time.js"></script>
     <script src="../src/thermostat.js"></script>
     <script src="../src/interface.js"></script>
   </head>
@@ -13,10 +18,16 @@
   <body>
     <div class='thermostat-border'>
     <div class='thermostat'>
+      <div class="weather">
+        <span class="location"></span>
+        <i id="wi" class="wi"></i>
+        <div id="loctemp">
+          <span class="loctemp"></span><span class='deg'>&#8451;</span>
+        </div>
+      </div>
       <div class='display'>
         <div class='left-display'>
           <span class='temperature'>
-
           </span>
           <span class='deg'>&#8451;</span>
         </div>
