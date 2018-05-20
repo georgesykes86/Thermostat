@@ -1,6 +1,7 @@
 function Geolocator(){
 }
 
+#Need to add to this as it doesnt update
 Geolocator.prototype.getLocation = function(callback) {
     console.log("getting_location")
     var callback = callback
